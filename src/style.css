@@ -8,6 +8,9 @@ body {
   border: 1px solid rgba(238, 108, 205, 0.991);
   border-radius: 15px;
 }
+.weather-app-wrapper {
+  max-width: 600px;
+}
 .weather-app h1 {
   color: #272142;
   font-size: 38px;
