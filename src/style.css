@@ -42,9 +42,9 @@ body {
   line-height: 36px;
   line-height: 1;
   position: relative;
-  top: -34px;
+  top: -30px;
 }
 #icon {
-  max-width: 52px;
-  max-height: 52px;
+  max-width: 60px;
+  max-height: 60px;
 }
