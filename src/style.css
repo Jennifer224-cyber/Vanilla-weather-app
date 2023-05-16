@@ -44,3 +44,7 @@ body {
   position: relative;
   top: -34px;
 }
+#icon {
+  max-width: 52px;
+  max-height: 52px;
+}
