@@ -42,7 +42,18 @@ function displayTemperature(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 }
-let city = "Pretoria";
-let key = "012989fa51ba761977563de59d09f69c";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
-axios.get(apiUrl).then(displayTemperature);
+
+function search(city) {
+  let key = "012989fa51ba761977563de59d09f69c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-form");
+  search(searchInput.value);
+}
+
+let form = document.querySelector("form");
+form.addEventListener("submit", handleSubmit);
