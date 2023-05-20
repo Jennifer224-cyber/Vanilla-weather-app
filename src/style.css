@@ -43,6 +43,9 @@ body {
   margin-right: 40px;
   top: -20px;
 }
+.cels {
+  color: #251c28;
+}
 #icon {
   max-width: 60px;
   max-height: 60px;
