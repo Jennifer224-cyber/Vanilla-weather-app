@@ -61,9 +61,11 @@ input:hover[type="submit"] {
 
 .cels {
   color: #251c28;
+  text-decoration: none;
 }
 .fahr {
   color: #ee6ccdfd;
+  text-decoration: none;
 }
 .sourceCode {
   color: #42213f66;
