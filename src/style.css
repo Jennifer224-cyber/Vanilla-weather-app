@@ -1,14 +1,17 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(248, 233, 250);
 }
 .weather-app {
   max-width: 700px;
   padding: 20px;
-  border: 1px solid rgba(238, 108, 205, 0.991);
+  border: 1px solid #f8a2e2fd;
   border-radius: 15px;
+  background-color: #fdf7ff;
 }
 .weather-app-wrapper {
   max-width: 700px;
+  margin-top: 50px;
 }
 .weather-app h1 {
   color: #272142;
@@ -18,7 +21,7 @@ body {
   margin: 20px 0 10px;
 }
 .weather-app li {
-  color: rgba(66, 33, 63, 0.4);
+  color: #42213f66;
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
@@ -43,8 +46,27 @@ body {
   margin-right: 40px;
   top: -20px;
 }
+.form-control {
+  border-color: #f8a2e2fd;
+}
+.btn {
+  background-color: #f8a2e2fd;
+  border-color: #ee6ccdfd;
+  transition: 300ms ease-in-out;
+}
+input:hover[type="submit"] {
+  background-color: #ee6ccdfd;
+  border-color: #ee6ccdfd;
+}
+
 .cels {
   color: #251c28;
+}
+.fahr {
+  color: #ee6ccdfd;
+}
+.sourceCode {
+  color: #42213f66;
 }
 #icon {
   max-width: 60px;
