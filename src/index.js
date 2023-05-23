@@ -21,6 +21,30 @@ function formatDate(timestamp) {
 
   return `${day} ${hours} : ${minutes}`;
 }
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` 
+                  <div class="col-2">
+                    ${day} <br />
+                    <img
+                      src="https://openweathermap.org/img/wn/04n@2x.png"
+                      width="36"
+                    />
+                    <br />
+                    <span class="maxTemperature">18° </span
+                    ><span class="minTemperature">12° </span>
+                  </div>
+                `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
+}
 
 function displayTemperature(response) {
   document.querySelector("#currentTemperature").innerHTML = Math.round(
@@ -80,3 +104,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsius);
 
 search("Johannesburg");
+displayForecast();
