@@ -23,14 +23,13 @@ function formatDate(timestamp) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
-  let key = `bd79ao40tde3dec118ca46bc3e6dd55f`;
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}key=${key}&units=metric`;
+  let key = "bd79ao40tde3dec118ca46bc3e6dd55f";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${key}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 
 function displayForecast(response) {
-  console.log(response.data);
+  console.log(response.data.daily);
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -56,7 +55,6 @@ function displayForecast(response) {
 }
 
 function displayTemperature(response) {
-  console.log(response.data);
   document.querySelector("#currentTemperature").innerHTML = Math.round(
     response.data.temperature.current
   );
