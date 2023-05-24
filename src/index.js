@@ -28,26 +28,41 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let dailyForecast = response.data.daily;
+
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      ` 
+  dailyForecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        ` 
                   <div class="col-2">
-                    ${day} <br />
+                    ${formatDay(forecastDay.time)} <br />
                     <img
-                      src="https://openweathermap.org/img/wn/04n@2x.png"
+                      src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                        forecastDay.condition.icon
+                      }.png"
                       width="36"
                     />
                     <br />
-                    <span class="maxTemperature">18° </span
-                    ><span class="minTemperature">12° </span>
+                    <span class="maxTemperature">${Math.round(
+                      forecastDay.temperature.maximum
+                    )}° </span
+                    ><span class="minTemperature">${Math.round(
+                      forecastDay.temperature.minimum
+                    )}°</span>
                   </div>
                 `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
