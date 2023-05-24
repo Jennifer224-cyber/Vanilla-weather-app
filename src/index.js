@@ -21,7 +21,16 @@ function formatDate(timestamp) {
 
   return `${day} ${hours} : ${minutes}`;
 }
-function displayForecast() {
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let key = `bd79ao40tde3dec118ca46bc3e6dd55f`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}key=${key}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+  console.log(response.data);
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -47,30 +56,33 @@ function displayForecast() {
 }
 
 function displayTemperature(response) {
+  console.log(response.data);
   document.querySelector("#currentTemperature").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   );
   document.querySelector("#currentDescription").innerHTML =
-    response.data.weather[0].description;
-  document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+    response.data.condition.description;
+  document.querySelector("#city").innerHTML = response.data.city;
+  document.querySelector("#humidity").innerHTML =
+    response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#currentTime").innerHTML = formatDate(
-    response.data.dt * 1000
+    response.data.time * 1000
   );
   let icon = document.querySelector("#icon");
   icon.setAttribute(
     "src",
-    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
-  celsiusTemperature = response.data.main.temp;
+  celsiusTemperature = response.data.temperature.current;
+  getForecast(response.data.coordinates);
 }
 
 function search(city) {
-  let key = "012989fa51ba761977563de59d09f69c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
+  let key = "bd79ao40tde3dec118ca46bc3e6dd55f";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${key}`;
   axios.get(apiUrl).then(displayTemperature);
 }
 
@@ -104,4 +116,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsius);
 
 search("Johannesburg");
-displayForecast();
