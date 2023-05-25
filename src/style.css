@@ -18,7 +18,7 @@ body {
   font-size: 38px;
   font-weight: 700;
   line-height: 48px;
-  margin: 20px 0 10px;
+  margin: 40px 0 10px;
 }
 .weather-app li {
   color: #42213f66;
@@ -52,20 +52,12 @@ body {
 .btn {
   background-color: #f8a2e2fd;
   border-color: #ee6ccdfd;
+  padding: 6px 25px 6px 25px;
   transition: 300ms ease-in-out;
 }
 input:hover[type="submit"] {
   background-color: #ee6ccdfd;
   border-color: #ee6ccdfd;
-}
-
-.cels {
-  color: #251c28;
-  text-decoration: none;
-}
-.fahr {
-  color: #ee6ccdfd;
-  text-decoration: none;
 }
 .sourceCode {
   color: #42213f66;
@@ -73,7 +65,7 @@ input:hover[type="submit"] {
 .weather-forecast {
   color: #272142;
   margin-top: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 .minTemperature {
   opacity: 0.5;
